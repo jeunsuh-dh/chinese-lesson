@@ -316,6 +316,181 @@
             color: #dc3545;
         }
 
+        /* 새로운 동적 스타일 추가 */
+        .quiz-context, .quiz-context-kr {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border-left: 4px solid #fdcb6e;
+            transition: all 0.3s;
+        }
+
+        .quiz-context:hover, .quiz-context-kr:hover {
+            background: #fff8e1;
+            transform: translateX(3px);
+            box-shadow: 0 2px 8px rgba(253, 203, 110, 0.3);
+        }
+
+        .context-label {
+            font-weight: 600;
+            color: #e17055;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .context-text {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 17px;
+            color: #1a1a1a;
+            line-height: 1.8;
+        }
+
+        .context-text-kr {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* 하이라이트 효과 */
+        .highlight-word {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #2c3e50;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .highlight-word:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+        }
+
+        .highlight-idiom {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: white;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .highlight-idiom:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+        }
+
+        .highlight-grammar {
+            background: linear-gradient(135deg, #4ecdc4 0%, #6dd5ed 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: white;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .highlight-grammar:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(78, 205, 196, 0.5);
+        }
+
+        .blank-space {
+            background: #fff;
+            border-bottom: 3px dashed #fdcb6e;
+            padding: 2px 20px;
+            font-weight: 600;
+            color: #fdcb6e;
+        }
+
+        /* 피드백 레이아웃 개선 */
+        .quiz-feedback {
+            margin-top: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quiz-feedback.show {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .feedback-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .feedback-text {
+            flex: 1;
+        }
+
+        .feedback-text strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .explanation {
+            margin-top: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #2c3e50;
+        }
+
+        .correct-answer {
+            margin-top: 8px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        /* 퀴즈 옵션 호버 시 글자 확대 */
+        .quiz-option:hover {
+            border-color: #fdcb6e;
+            background: #fffef9;
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+            font-size: 17px;
+        }
+
+        /* 퀴즈 카드 호버 효과 */
+        .quiz-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .quiz-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
         .quiz-results {
             background: white;
             padding: 40px 30px;
@@ -593,39 +768,54 @@
         // Quiz Data
         const quizData = [
             {
-                type: "문법",
-                question: "문장 '我们都在做各种各样的决定'에서 쓰인 '在'의 문법적 기능으로 알맞은 것은 무엇입니까?",
-                options: ["진행상(Progressive aspect)을 나타낸다", "위치를 나타낸다", "가능을 나타낸다", "과거를 나타낸다"],
-                answer: "진행상(Progressive aspect)을 나타낸다"
+                type: "📚 어휘",
+                question: "다음 단어의 의미로 가장 적절한 것은 무엇입니까? (HSK 5급)",
+                context: "他们会用一切手段<mark class='highlight-word'>排除</mark>其他选项，只留下最有用、最值得信赖的信息。",
+                contextKr: "그들은 모든 수단을 동원하여 다른 선택지를 <mark class='highlight-word'>배제</mark>하고, 가장 유용하고 신뢰할 만한 정보만 남깁니다.",
+                options: ["A. 배열하다", "B. 추가하다", "C. 선택하다", "D. 배제하다, 제거하다"],
+                answer: "D. 배제하다, 제거하다",
+                explanation: "'排除(páichú)'는 '제거하다, 배제하다'라는 뜻으로, 불필요한 것을 없애거나 제외시킨다는 의미입니다."
             },
             {
-                type: "문법",
-                question: "'要不要试吃最新的减肥食谱?'에서 '要不要' 구조의 기능으로 옳은 것은 무엇입니까?",
-                options: ["선택형 의문문을 만든다", "명령문을 만든다", "조건문을 만든다", "감탄문을 만든다"],
-                answer: "선택형 의문문을 만든다"
-            },
-            {
-                type: "어휘",
-                question: "다음 단어 '批判性思维'(HSK 6급)의 의미로 알맞은 것은 무엇입니까?",
-                options: ["감정적으로 사고하는 방식", "비판적으로 분석하고 판단하는 사고방식", "단순 암기 중심의 사고방식", "창의적으로 상상하는 사고방식"],
-                answer: "비판적으로 분석하고 판단하는 사고방식"
-            },
-            {
-                type: "어휘",
-                question: "다음 단어 '搜集'(HSK 5급)의 의미로 가장 알맞은 것은 무엇입니까?",
-                options: ["정리하다", "수집하다", "분석하다", "배포하다"],
-                answer: "수집하다"
-            },
-            {
-                type: "독해",
-                question: "이 글에서 비판적 사고(批判性思维)에 대한 설명으로 옳은 것은 무엇입니까?",
+                type: "📚 관용어",
+                question: "밑줄 친 관용어 '<mark class='highlight-idiom'>微不足道</mark>'의 활용이 적절하지 않은 문장은?",
                 options: [
-                    "모든 정보를 의심 없이 받아들이는 태도이다",
-                    "결정을 내릴 때 감정에 따라 선택하는 방식이다",
-                    "문제를 분석하고 숨은 편견을 발견하여 더 나은 결정을 내리는 사고방식이다",
-                    "타인의 의견을 무조건 반박하는 태도이다"
+                    "A. 这件事<mark class='highlight-idiom'>微不足道</mark>，不值得为此烦恼。",
+                    "B. 他的贡献虽然<mark class='highlight-idiom'>微不足道</mark>，但我们还是很感谢。",
+                    "C. 这座大楼<mark class='highlight-idiom'>微不足道</mark>，是全市最高的建筑。",
+                    "D. 一个<mark class='highlight-idiom'>微不足道</mark>的细节可能会影响整个计划。"
                 ],
-                answer: "문제를 분석하고 숨은 편견을 발견하여 더 나은 결정을 내리는 사고방식이다"
+                answer: "C. 这座大楼<mark class='highlight-idiom'>微不足道</mark>，是全市最高的建筑。",
+                explanation: "'微不足道(wēi bù zú dào)'는 '매우 미미하여 언급할 가치가 없다'는 뜻입니다. C번은 '전시에서 가장 높은 건물'이라고 했으므로 '미미하다'는 의미와 모순됩니다."
+            },
+            {
+                type: "✏️ 문법",
+                question: "다음 문장에서 밑줄 친 '<mark class='highlight-grammar'>被</mark>'의 문법 기능은 무엇입니까?",
+                context: "我们<mark class='highlight-grammar'>被</mark>大量的决定围攻着，很多时候都没法做出最好的决定。",
+                contextKr: "우리는 수많은 결정들에 의해 포위당하고 있어서, 많은 경우 최선의 결정을 내릴 수 없습니다.",
+                options: ["A. 능동문 표지", "B. 피동문 표지 (수동태)", "C. 과거 시제 표지", "D. 사역 표지"],
+                answer: "B. 피동문 표지 (수동태)",
+                explanation: "'被(bèi)'는 피동문(수동태)을 나타내는 표지입니다. '被...围攻'는 '~에 의해 포위당하다'라는 의미로, 주어가 동작을 당하는 수동적 상황을 표현합니다."
+            },
+            {
+                type: "✏️ 문법",
+                question: "다음 빈칸에 들어갈 가장 알맞은 접속사는?",
+                context: "如果你想通过饮食方式来摄取更多营养，你可以咨询下营养师，<span class='blank-space'>______</span> 向他人寻求经验。",
+                options: ["1. 而且 (érqiě) - 게다가", "2. 或是 (huòshì) - 또는", "3. 然而 (rán'ér) - 그러나", "4. 因此 (yīncǐ) - 그러므로"],
+                answer: "2. 或是 (huòshì) - 또는",
+                explanation: "'或是(huòshì)'는 선택 관계를 나타내는 접속사로 '또는, 혹은'의 의미입니다. 영양사에게 상담하거나 다른 사람의 경험을 구하는 두 가지 선택지를 제시하는 문맥에서 가장 적절합니다."
+            },
+            {
+                type: "🎯 종합이해",
+                question: "본문에 따르면 비판적 사고의 5단계가 아닌 것은?",
+                options: [
+                    "A. 明确你的问题 (문제 명확히 하기)",
+                    "B. 搜集信息 (정보 수집하기)",
+                    "C. 快速做决定 (신속히 결정하기)",
+                    "D. 考虑后果及影响 (결과와 영향 고려하기)"
+                ],
+                answer: "C. 快速做决定 (신속히 결정하기)",
+                explanation: "비판적 사고는 신중하게 분석하고 판단하는 과정이므로, '신속히 결정하기'는 5단계에 포함되지 않습니다. 비판적 사고의 5단계는: 1.문제 명확히 하기, 2.정보 수집하기, 3.정보 활용하기, 4.결과와 영향 고려하기, 5.다른 관점 이해하기입니다."
             }
         ];
 
@@ -644,8 +834,29 @@
                 let html = `
                     <div class="quiz-type-badge">${quiz.type}</div>
                     <div class="quiz-question">${index + 1}. ${quiz.question}</div>
-                    <div class="quiz-options">
                 `;
+
+                // 문맥이 있으면 표시
+                if (quiz.context) {
+                    html += `
+                        <div class="quiz-context">
+                            <div class="context-label">📖 원문:</div>
+                            <div class="context-text">${quiz.context}</div>
+                        </div>
+                    `;
+                }
+
+                // 한국어 문맥이 있으면 표시
+                if (quiz.contextKr) {
+                    html += `
+                        <div class="quiz-context-kr">
+                            <div class="context-label">💬 번역:</div>
+                            <div class="context-text-kr">${quiz.contextKr}</div>
+                        </div>
+                    `;
+                }
+
+                html += `<div class="quiz-options">`;
 
                 quiz.options.forEach((option, optIndex) => {
                     html += `
@@ -697,13 +908,26 @@
                 }
             });
 
-            // Show feedback
+            // Show feedback with explanation
             if (selectedOption === quiz.answer) {
                 feedback.className = 'quiz-feedback correct show';
-                feedback.textContent = '✓ 정답입니다!';
+                feedback.innerHTML = `
+                    <div class="feedback-icon">✓</div>
+                    <div class="feedback-text">
+                        <strong>정답입니다!</strong>
+                        ${quiz.explanation ? `<div class="explanation">${quiz.explanation}</div>` : ''}
+                    </div>
+                `;
             } else {
                 feedback.className = 'quiz-feedback incorrect show';
-                feedback.textContent = `✗ 오답입니다. 정답: ${quiz.answer}`;
+                feedback.innerHTML = `
+                    <div class="feedback-icon">✗</div>
+                    <div class="feedback-text">
+                        <strong>오답입니다.</strong>
+                        <div class="correct-answer">정답: ${quiz.answer}</div>
+                        ${quiz.explanation ? `<div class="explanation">${quiz.explanation}</div>` : ''}
+                    </div>
+                `;
             }
 
             // Check if all answered
