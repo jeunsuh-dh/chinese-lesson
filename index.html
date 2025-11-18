@@ -214,6 +214,32 @@
             transform: scale(0.98);
         }
 
+        .jump-to-quiz-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 15px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .jump-to-quiz-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+        }
+
+        .jump-to-quiz-btn:active {
+            transform: translateY(0);
+        }
+
         .quiz-section {
             background: linear-gradient(135deg, #fff0f0 0%, #ffeaa7 100%);
             padding: 40px 30px;
@@ -628,12 +654,13 @@
                 <button class="toggle-btn active" id="togglePinyin">병음</button>
                 <button class="toggle-btn active" id="toggleKorean">한국어</button>
             </div>
+            <button class="jump-to-quiz-btn" onclick="jumpToQuiz()">🎯 퀴즈로 바로가기</button>
         </div>
 
         <div class="content">
             <div id="sentences"></div>
 
-            <div class="quiz-section">
+            <div class="quiz-section" id="quiz-section">
                 <h2>🎯 퀴즈</h2>
                 <div id="quiz-container"></div>
                 <div class="quiz-results" id="quiz-results">
@@ -981,6 +1008,11 @@
             quizCompleted = false;
             document.getElementById('quiz-results').classList.remove('show');
             renderQuiz();
+        }
+
+        function jumpToQuiz() {
+            const quizSection = document.getElementById('quiz-section');
+            quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         renderQuiz();
