@@ -111,8 +111,8 @@
             padding: 20px 30px;
             border-bottom: 2px solid #e9ecef;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            flex-direction: column;
+            gap: 15px;
             justify-content: center;
             align-items: center;
         }
@@ -121,6 +121,7 @@
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .toggle-btn {
@@ -218,17 +219,13 @@
             background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 12px 30px;
             border-radius: 25px;
             cursor: pointer;
             font-weight: 700;
             font-size: 15px;
-            margin-top: 15px;
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
             transition: all 0.3s;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .jump-to-quiz-btn:hover {
@@ -654,7 +651,7 @@
                 <button class="toggle-btn active" id="togglePinyin">병음</button>
                 <button class="toggle-btn active" id="toggleKorean">한국어</button>
             </div>
-            <button class="jump-to-quiz-btn" onclick="jumpToQuiz()">🎯 퀴즈로 바로가기</button>
+            <button class="jump-to-quiz-btn" onclick="jumpToQuiz()">🎯 퀴즈 풀기</button>
         </div>
 
         <div class="content">
