@@ -198,6 +198,32 @@
             font-size: 16px;
             color: #2c2c2c;
             line-height: 1.6;
+            filter: blur(8px);
+            user-select: none;
+            transition: filter 0.6s ease, transform 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .korean:hover {
+            filter: blur(0px);
+            transform: scale(1.02);
+        }
+
+        .korean::before {
+            content: '☁️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+        }
+
+        .korean:hover::before {
+            opacity: 0;
         }
 
         .audio-btn {
