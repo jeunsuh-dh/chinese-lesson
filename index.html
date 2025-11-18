@@ -196,34 +196,23 @@
 
         .korean {
             font-size: 16px;
-            color: #2c2c2c;
+            color: transparent;
             line-height: 1.6;
-            filter: blur(8px);
-            user-select: none;
-            transition: filter 0.6s ease, transform 0.3s ease;
-            cursor: pointer;
             position: relative;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 4px;
+            background: linear-gradient(135deg, #fef9c3 0%, #fde68a 100%);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease, background 0.5s ease, color 0.3s ease 0.2s;
         }
 
         .korean:hover {
-            filter: blur(0px);
-            transform: scale(1.02);
-        }
-
-        .korean::before {
-            content: '☁️';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            opacity: 1;
-            transition: opacity 0.6s ease;
-            pointer-events: none;
-        }
-
-        .korean:hover::before {
-            opacity: 0;
+            transform: perspective(600px) rotateX(-15deg);
+            background: transparent;
+            color: #2c2c2c;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
 
         .audio-btn {
