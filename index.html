@@ -160,11 +160,19 @@
             border-radius: 15px;
             border-left: 5px solid #f4d03f;
             transition: all 0.3s;
+            position: relative;
         }
 
         .sentence:hover {
             transform: translateX(5px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .sentence-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
         }
 
         .sentence-text {
@@ -196,13 +204,12 @@
             background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
             color: #2c3e50;
             border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 8px 16px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
-            font-size: 14px;
-            margin-top: 10px;
+            font-size: 13px;
             box-shadow: 0 3px 10px rgba(253, 203, 110, 0.4);
         }
 
@@ -743,7 +750,12 @@
                 const div = document.createElement('div');
                 div.className = 'sentence';
 
-                let html = `<span class="sentence-number">${index + 1}</span>`;
+                let html = `
+                    <div class="sentence-header">
+                        <span class="sentence-number">${index + 1}</span>
+                        <button class="audio-btn" onclick="playAudio('${sentence.audio}')">🔊 발음 듣기</button>
+                    </div>
+                `;
 
                 if (showChinese) {
                     html += `<div class="sentence-text chinese">${sentence.chinese}</div>`;
@@ -754,8 +766,6 @@
                 if (showKorean) {
                     html += `<div class="sentence-text korean">${sentence.korean}</div>`;
                 }
-
-                html += `<button class="audio-btn" onclick="playAudio('${sentence.audio}')">🔊 발음 듣기</button>`;
 
                 div.innerHTML = html;
                 container.appendChild(div);
@@ -813,7 +823,7 @@
         const quizData = [
             {
                 type: "📚 어휘",
-                question: "다음 <mark class='highlight-word'>단어</mark>의 한국어 뜻은 무엇인지 고르세요. (어휘 난이도: HSK 5급)",
+                question: "다음 <mark class='highlight-word'>단어</mark>의 한국어 뜻은 무엇인지 고르세요. (HSK 5급)",
                 context: "他们会用一切手段<mark class='highlight-word'>排除</mark>其他选项，只留下最有用、最值得信赖的信息。",
                 options: ["A. 배열하다", "B. 추가하다", "C. 선택하다", "D. 배제하다, 제거하다"],
                 answer: "D. 배제하다, 제거하다",
