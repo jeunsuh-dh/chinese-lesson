@@ -795,7 +795,7 @@
             currentAudio = new Audio(url);
             currentAudio.play().catch(error => {
                 console.error('오디오 재생 실패:', error);
-                window.open(url, '_blank');
+                alert('오디오 파일을 찾을 수 없습니다: ' + url);
             });
         }
 
