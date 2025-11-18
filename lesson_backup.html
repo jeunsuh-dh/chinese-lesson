@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提高批判性思维能力的五个技巧 - 중국어 학습</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .header .duration {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .youtube-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .youtube-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .controls {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            border-bottom: 2px solid #e9ecef;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .toggle-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .toggle-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .sentence {
+            background: #f8f9fa;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .sentence:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .sentence-text {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .chinese {
+            font-size: 22px;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .pinyin {
+            font-size: 16px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .korean {
+            font-size: 16px;
+            color: #34495e;
+            line-height: 1.6;
+        }
+
+        .audio-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .audio-btn:active {
+            transform: scale(0.98);
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 40px 30px;
+            margin-top: 30px;
+            border-radius: 15px;
+            color: white;
+        }
+
+        .quiz-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .quiz-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .quiz-item .chinese {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .quiz-item .pinyin,
+        .quiz-item .korean {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .sentence {
+                padding: 20px;
+            }
+
+            .chinese {
+                font-size: 20px;
+            }
+
+            .controls {
+                padding: 15px;
+            }
+
+            .toggle-btn {
+                font-size: 13px;
+                padding: 8px 16px;
+            }
+        }
+
+        .sentence-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 700;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .main-quiz-section {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 40px 30px;
+            margin-top: 30px;
+            border-radius: 15px;
+        }
+
+        .main-quiz-section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-question h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .quiz-type-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quiz-option:hover {
+            border-color: #667eea;
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .quiz-option.selected {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: #28a745;
+            background: rgba(40, 167, 69, 0.1);
+        }
+
+        .quiz-option.incorrect {
+            border-color: #dc3545;
+            background: rgba(220, 53, 69, 0.1);
+        }
+
+        .quiz-feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .quiz-feedback.correct {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+            display: block;
+        }
+
+        .quiz-feedback.incorrect {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            display: block;
+        }
+
+        .quiz-results {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .quiz-results h3 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .quiz-results .score {
+            font-size: 48px;
+            font-weight: 700;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .reset-quiz-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .reset-quiz-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="critical-thinking.png" alt="Critical Thinking" class="header-image">
+        <div class="header">
+            <h1>提高批判性思维能力的五个技巧 - Samantha Agoos</h1>
+            <div class="duration">⏱ 4:33</div>
+            <a href="https://www.youtube.com/watch?v=chXSXJhwM9s" target="_blank" class="youtube-link">
+                ▶ YouTube에서 보기
+            </a>
+        </div>
+
+        <div class="controls">
+            <div class="toggle-group">
+                <button class="toggle-btn active" id="toggleChinese">중국어</button>
+                <button class="toggle-btn active" id="togglePinyin">병음</button>
+                <button class="toggle-btn active" id="toggleKorean">한국어</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div id="sentences"></div>
+
+            <div class="quiz-section">
+                <h2>📝 퀴즈 - 첫 번째 문장 복습</h2>
+                <div class="quiz-item">
+                    <div class="sentence-text">
+                        <div class="chinese quiz-chinese">每时每刻,我们都在做各种各样的决定。</div>
+                        <div class="pinyin quiz-pinyin">Měishíměikè, wǒmen dōu zài zuò gèzhǒnggèyàng de juédìng.</div>
+                        <div class="korean quiz-korean">매 순간, 우리는 여러 가지 결정을 내리고 있습니다.</div>
+                    </div>
+                    <button class="audio-btn" onclick="playAudio('https://drive.google.com/uc?id=1o-tbbT4rRPPrYo1FQKxWoTQ__zbbrz7V&export=download')">
+                        🔊 발음 듣기
+                    </button>
+                </div>
+            </div>
+
+            <div class="main-quiz-section">
+                <h2>🎯 이해도 확인 퀴즈</h2>
+                <div id="quiz-container"></div>
+                <div class="quiz-results" id="quiz-results">
+                    <h3>퀴즈 완료!</h3>
+                    <div class="score" id="final-score">0/5</div>
+                    <p id="score-message"></p>
+                    <button class="reset-quiz-btn" onclick="resetQuiz()">다시 풀기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sentences = [
+            {
+                chinese: "每时每刻,我们都在做各种各样的决定。",
+                pinyin: "Měishíměikè, wǒmen dōu zài zuò gèzhǒnggèyàng de juédìng.",
+                korean: "우리는 매 순간 다양한 결정을 내리고 있습니다.",
+                audio: "https://drive.google.com/uc?id=12UqquWj-2Jt8-CpRFzdKAMB0n673xRJQ&export=download"
+            },
+            {
+                chinese: "有些微不足道,有些则对我们的一生都有很大影响。",
+                pinyin: "Yǒuxiē wēibùzúdào, yǒuxiē zé duì wǒmen de yīshēng dōu yǒu hěndà yǐngxiǎng.",
+                korean: "작은 것들도 있고, 어떤 것들은 우리의 인생에 큰 영향을 미치기도 한다.",
+                audio: "https://drive.google.com/uc?id=1D5dzZNtYY6alE2hVSYObrlOlYz97bwwE&export=download"
+            },
+            {
+                chinese: "比如说,我该投票给哪个政客?",
+                pinyin: "Bǐrúshuō, wǒgāi tóupiào gěi nǎge zhèngkè?",
+                korean: "예를 들어, 나는 어떤 정치인에게 투표해야 할까요?",
+                audio: "https://drive.google.com/uc?id=1zBoaBMisdzKsx2NkSERs_zJ8FrPGHuyN&export=download"
+            },
+            {
+                chinese: "要不要试吃最新的减肥食谱?",
+                pinyin: "Yào búyào shìchī zuìxīn de jiǎnféi shípǔ?",
+                korean: "최신 다이어트 레시피를 시식해 보시겠어요?",
+                audio: "https://drive.google.com/uc?id=1-N14QJx77ahYK3OYVxP0Cdz573adb1F8&export=download"
+            },
+            {
+                chinese: "或是,这封电邮会让我成为百万富翁吗?",
+                pinyin: "Huòshì, zhèfēng diànyóu huì ràng wǒ chéngwéi bǎiwànfùwēng ma?",
+                korean: "혹시 이 이메일이 저를 백만장자로 만들어줄까요?",
+                audio: "https://drive.google.com/uc?id=1hkDVzXmFu9MpXbG4yGH5VpY3SaquhJPo&export=download"
+            },
+            {
+                chinese: "我们被大量的决定围攻着,很多时候都没法做出最好的决定。",
+                pinyin: "Wǒmen bèi dàliàng de juédìng wéigōng zhe, hěnduō shíhòu dōu méifǎ zuòchū zuìhǎo de juédìng.",
+                korean: "우리는 많은 결정에 압박받고 있어, 대부분의 경우 최선의 결정을 내리기 어렵습니다.",
+                audio: "https://drive.google.com/uc?id=1Fxzf8gIYvjUgEcIw3fbRBQuIZK6pMMwE&export=download"
+            },
+            {
+                chinese: "但还有很多提高正确几率的方法。",
+                pinyin: "Dàn háiyǒu hěnduō tígāo zhèngquè jīlǜ de fāngfǎ.",
+                korean: "하지만 정답 확률을 높일 수 있는 방법은 아직 많이 있습니다.",
+                audio: "https://drive.google.com/uc?id=1l7d9QsQ1VISZ2ZYtF1erdc2ecU-8ciqR&export=download"
+            },
+            {
+                chinese: "其中最有效的方法之一就是批判性思维。",
+                pinyin: "Qízhōng zuì yǒuxiào de fāngfǎ zhīyī jiùshì pīpànxìng sīwéi.",
+                korean: "그 중 가장 효과적인 방법 중 하나는 비판적 사고입니다.",
+                audio: "https://drive.google.com/uc?id=1KLE1UIBJtkmrCewF_On-PdX2rJ-xfwn-&export=download"
+            },
+            {
+                chinese: "这种解决问题的思维方式能让我们更仔细地分析形势,",
+                pinyin: "Zhèzhǒng jiějuéwèntí de sīwéi fāngshì néng ràng wǒmen gèng zǐxì dì fēnxī xíngshì,",
+                korean: "이런 문제 해결 방식은 우리가 상황을 더 면밀하게 분석할 수 있게 해줍니다.",
+                audio: "https://drive.google.com/uc?id=1R9en-IcEyUBARwxPbzyZomeMhuuxNKsR&export=download"
+            },
+            {
+                chinese: "发现隐藏的问题,比如一些偏见和操纵,并做出更好的选择。",
+                pinyin: "fāxiàn yǐncáng de wèntí, bǐrú yīxiē piānjiàn hé cāozòng, bìng zuòchū gènghǎo de xuǎnzé.",
+                korean: "숨겨진 문제를 발견하고, 예를 들어 일부 편견과 조작 같은 것들을 파악한 후, 더 나은 선택을 해야 합니다.",
+                audio: "https://drive.google.com/uc?id=11Qo_kKZhr6fdPoVzpyDSUliaz7tNb0hc&export=download"
+            },
+            {
+                chinese: "如果你觉得批判性有点否定意味,那正说明它在起作用。",
+                pinyin: "Rúguǒ nǐ juéde pīpànxìng yǒudiǎn fǒudìng yìwèi, nàzhèng shuōmíng tā zài qǐ zuòyòng.",
+                korean: "비판적 사고가 다소 부정적인 의미를 갖고 있다고 느낀다면, 그것은 바로 비판적 사고가 제대로 작용하고 있다는 증거입니다.",
+                audio: "https://drive.google.com/uc?id=1BU9UB-Vgu6vLXtv4bMwoNgf26Mu94nSw&export=download"
+            },
+            {
+                chinese: "一个具有批判性思维的人,不会因为哪个听起来不错就选哪个,",
+                pinyin: "Yígè jùyǒu pīpànxìng sīwéi de rén, búhuì yīnwèi nǎge tīng qǐlái bùcuò jiù xuǎn nǎge,",
+                korean: "비판적 사고를 가진 사람은 그저 듣기 좋은 것이라고 해서 선택하지 않습니다.",
+                audio: "https://drive.google.com/uc?id=1fZdAKQY3DiYp-fbWnc7fbQRNjrE0uxsA&export=download"
+            },
+            {
+                chinese: "而会仔细审查每一个选择,并抱有怀疑态度。",
+                pinyin: "érhuì zǐxì shěnchá měi yígè xuǎnzé, bìng bào yǒu huáiyí tàidù.",
+                korean: "그리고 모든 선택을 세심하게 검토하며 의심하는 태도를 지닙니다.",
+                audio: "https://drive.google.com/uc?id=1FBT2kAK3ilj_P0cLCYkyZH3gmB09ERyC&export=download"
+            },
+            {
+                chinese: "他们会用一切手段排除其他选项,只留下最有用、最值得信赖的信息。",
+                pinyin: "Tāmen huì yòng yīqiè shǒuduàn páichú qítā xuǎnxiàng, zhǐ liúxià zuì yǒuyòng, zuì zhíde xìnlài de xìnxī.",
+                korean: "그들은 모든 수단을 동원하여 다른 선택지를 배제하고, 가장 유용하고 신뢰할 수 있는 정보만 남길 것입니다.",
+                audio: "https://drive.google.com/uc?id=15cRwSN7d6HKXs5SpVqsB7gi1Z2Waay7M&export=download"
+            },
+            {
+                chinese: "有很多运用批判性思维的方法。",
+                pinyin: "Yǒu hěnduō yùnyòng pīpànxìng sīwéi de fāngfǎ.",
+                korean: "비판적 사고를 적용하는 방법은 여러 가지가 있습니다.",
+                audio: "https://drive.google.com/uc?id=1pydBqNEjQIeyJbU5fSJswpu7IpOvS8Hj&export=download"
+            },
+            {
+                chinese: "这里讲的方法只需五步,可以帮你解决各种问题。",
+                pinyin: "Zhèlǐ jiǎng de fāngfǎ zhǐ xū wǔbù, kěyǐ bāng nǐ jiějué gèzhǒng wèntí.",
+                korean: "여기에서 설명하는 방법은 단지 다섯 단계로 되어 있으며, 다양한 문제를 해결하는 데 도움을 줄 수 있습니다.",
+                audio: "https://drive.google.com/uc?id=1ghYkaqOxfvmH7nEXQ8qUkLPJ13WIE9h2&export=download"
+            },
+            {
+                chinese: "第一,明确你的问题。",
+                pinyin: "Dìyī, míngquè nǐ de wèntí.",
+                korean: "첫째, 당신의 문제를 명확히 하십시오.",
+                audio: "https://drive.google.com/uc?id=1ZeOM1czg8alk8wNRlOzEkBE_KR80IoxV&export=download"
+            },
+            {
+                chinese: "换句话说,知道你想要什么,这有时并不如想象中的直接。",
+                pinyin: "Huànjùhuàshuō, zhīdào nǐ xiǎngyào shénme, zhè yǒushí bìng bùrú xiǎngxiàng zhōng de zhíjiē.",
+                korean: "다시 말해, 당신이 무엇을 원하는지 아는 것은 때때로 상상했던 것만큼 간단하지 않을 수 있습니다.",
+                audio: "https://drive.google.com/uc?id=1KUnytSirWxqRkQMrKyhCX_eq0pmHXJhA&export=download"
+            },
+            {
+                chinese: "比如说,你在考虑尝试最近流行的饮食方法,",
+                pinyin: "Bǐrúshuō, nǐ zài kǎolǜ chángshì zuìjìn liúxíng de yǐnshí fāngfǎ,",
+                korean: "예를 들어, 당신이 최근 유행하는 다이어트 방법을 시도해 보려고 고민하고 있다면,",
+                audio: "https://drive.google.com/uc?id=1UUFZBf7I0E0nTTCRe321MrtFquaoSdcl&export=download"
+            },
+            {
+                chinese: "这种方法声称两周内就能看到效果,你的初衷可能被其他因素而遮盖。",
+                pinyin: "zhèzhǒng fāngfǎ shēngchēng liǎngzhōu nèi jiù néng kàndào xiàoguǒ, nǐ de chūzhōng kěnéng bèi qítā yīnsù ér zhēgài.",
+                korean: "이 방법은 두 주 안에 효과를 볼 수 있다고 주장하지만, 당신의 초기 의도는 다른 요소들에 의해 가려질 수 있습니다.",
+                audio: "https://drive.google.com/uc?id=1hXFqSk6YmrWfMJxiVGRh2Szm7N4P_6Pz&export=download"
+            },
+            {
+                chinese: "但如果你面对选择时有更明晰的观点,",
+                pinyin: "Dàn rúguǒ nǐ miànduì xuǎnzé shíyǒu gèng míngxī de guāndiǎn,",
+                korean: "하지만 선택을 할 때 더 명확한 견해가 있다면,",
+                audio: "https://drive.google.com/uc?id=1BKa4fW40XsMuSiY6uQslbFQX1fp6rGKv&export=download"
+            },
+            {
+                chinese: "你真正想要通过这个饮食方法达到什么效果?",
+                pinyin: "nǐ zhēnzhèng xiǎngyào tōngguò zhège yǐnshí fāngfǎ dádào shénme xiàoguǒ?",
+                korean: "당신이 이 식이요법을 통해 진정으로 원하는 효과는 무엇인가요?",
+                audio: "https://drive.google.com/uc?id=1ZmCkuVgFkh-E0xxqYNDs5MmgJyokGBMO&export=download"
+            },
+            {
+                chinese: "为了减重也好,为了更均衡的营养也好,或是为了更有活力,",
+                pinyin: "Wèile jiǎnzhòng yěhǎo, wèile gèng jūnhéng de yíngyǎng yěhǎo, huòshì wèile gèng yǒu huólì,",
+                korean: "체중 감량을 위해서든, 더 균형 잡힌 영양을 위해서든, 혹은 더 활기차기 위해서든,",
+                audio: "https://drive.google.com/uc?id=1RcctcldjIIIgZDibBmV9Z8W8gySUXUGI&export=download"
+            },
+            {
+                chinese: "就是你更批判地筛选信息,从而找到你真正想要的答案,",
+                pinyin: "jiùshì nǐ gèng pīpàn dì shāixuǎn xìnxī, cóngér zhǎodào nǐ zhēnzhèng xiǎngyào de dáàn,",
+                korean: "즉, 당신은 정보를 더 비판적으로 선별하여 진정으로 원하는 답을 찾는 것입니다.",
+                audio: "https://drive.google.com/uc?id=15RCSwT96gbS48vlOBZAc9Rez5W_lVPhS&export=download"
+            },
+            {
+                chinese: "决定这个点子是否能真正符合你的需要。",
+                pinyin: "juédìng zhège diǎnzi shìfǒu néng zhēnzhèng fúhé nǐ de xūyào.",
+                korean: "이 아이디어가 당신의 필요에 정말로 부합하는지 결정하세요.",
+                audio: "https://drive.google.com/uc?id=1-Czhn4dWMgRNJGNJsIImFegw7V11S_Iv&export=download"
+            },
+            {
+                chinese: "第二,搜集信息。",
+                pinyin: "Dìèr, sōují xìnxī.",
+                korean: "둘째, 정보를 수집하다.",
+                audio: "https://drive.google.com/uc?id=1RElYqq6uUtddaMd0AWKiO41HHzKodi3h&export=download"
+            },
+            {
+                chinese: "信息无所不在,所以明晰你的问题,可以帮你决定哪些信息是有用的。",
+                pinyin: "Xìnxī wúsuǒbùzài, suǒyǐ míngxī nǐ de wèntí, kěyǐ bāng nǐ juédìng nǎxiē xìnxī shì yǒuyòng de.",
+                korean: "정보는 어디에나 존재하므로, 당신의 질문을 명확히 하면 어떤 정보가 유용한지 결정하는 데 도움이 될 수 있습니다.",
+                audio: "https://drive.google.com/uc?id=1sn89eiV7TD3I6h63eo8fUu1ceO7TgWZr&export=download"
+            },
+            {
+                chinese: "如果你想通过饮食方式来摄取更多营养,你可以咨询下营养师,",
+                pinyin: "Rúguǒ nǐ xiǎng tōngguò yǐnshí fāngshì lái shèqǔ gèng duō yíngyǎng, nǐ kěyǐ zīxún xià yíngyǎngshī,",
+                korean: "더 많은 영양소를 섭취하고 싶다면 영양사와 상담해 보시는 것이 좋습니다.",
+                audio: "https://drive.google.com/uc?id=1WV5-Tj5OZV0O0g64lVY6_oDwVPytHfuX&export=download"
+            },
+            {
+                chinese: "或是向他人寻求经验。",
+                pinyin: "huòshì xiàng tārén xúnqiú jīngyàn.",
+                korean: "혹은 다른 사람에게 경험을 물어보는 것입니다.",
+                audio: "https://drive.google.com/uc?id=1Iswn-RzqB8-rMz0WAFnF3d5hVXQ9ivCV&export=download"
+            },
+            {
+                chinese: "搜集帮助你权衡不同方案,使你做出更接近目标的决定。",
+                pinyin: "Sōují bāngzhù nǐ quánhéng bùtóng fāngàn, shǐ nǐ zuòchū gèng jiējìn mùbiāo de juédìng.",
+                korean: "여러 가지 옵션을 비교하고 이들이 목표에 더 가까운 결정을 내리는 데 도움을 줄 수 있는 정보를 수집하세요.",
+                audio: "https://drive.google.com/uc?id=12RNCaoGtgArA5xtrBqdDUyu1iiSFWfzr&export=download"
+            },
+            {
+                chinese: "第三,运用信息。",
+                pinyin: "Dìsān, yùnyòng xìnxī.",
+                korean: "셋째, 정보를 활용하다.",
+                audio: "https://drive.google.com/uc?id=103cd3JEM_3_c9acXE1wVzFFm-jYNFlAL&export=download"
+            },
+            {
+                chinese: "可以通过问关键性问题对信息加以运用。",
+                pinyin: "Kěyǐ tōngguò wèn guānjiànxìng wèntí duì xìnxī jiāyǐ yùnyòng.",
+                korean: "정보를 활용하기 위해 핵심 질문을 통해 접근할 수 있습니다.",
+                audio: "https://drive.google.com/uc?id=1-pRyUp_Pm9Bj9Usl5n4EtKmmG9OzezxU&export=download"
+            },
+            {
+                chinese: "面对一个选择时,问问自己,哪些概念要用到?",
+                pinyin: "Miànduì yígè xuǎnzé shí, wènwèn zìjǐ, nǎxiē gàiniàn yào yòngdào?",
+                korean: "선택을 할 때, 스스로에게 어떤 개념을 사용해야 하는지 물어보세요.",
+                audio: "https://drive.google.com/uc?id=163JMccFzlq7oUMeQ3l0qTfQG4jwNEyDU&export=download"
+            },
+            {
+                chinese: "存在几种假设?",
+                pinyin: "Cúnzài jǐzhǒng jiǎshè?",
+                korean: "몇 가지 가설이 존재합니까?",
+                audio: "https://drive.google.com/uc?id=1k7-f3bFNQMiE2dmQTURdUtMw0nlqbIzJ&export=download"
+            },
+            {
+                chinese: "我对信息的解读符合逻辑吗?",
+                pinyin: "Wǒ duì xìnxī de jiědú fúhé luójí ma?",
+                korean: "제가 이해한 바로는, \"내 정보 해석이 논리적입니까?\"라는 질문을 하신 것 같습니다. 이 질문은 자신의 정보 해석이 타당하고 이치에 맞는지를 묻는 것입니다. 추가적인 맥락이나 구체적인 정보를 제공해 주시면 더 명확한 답변을 드릴 수 있을 것 같습니다.",
+                audio: "https://drive.google.com/uc?id=1t1WyUaSJuNGq3Qo8rxevL0CtbjwAYs1Z&export=download"
+            },
+            {
+                chinese: "比如,一个邮件声称能让你成为百万富翁,你可以考虑下面几个问题,",
+                pinyin: "Bǐrú, yígè yóujiàn shēngchēng néng ràng nǐ chéngwéi bǎiwànfùwēng, nǐ kěyǐ kǎolǜ xiàmiàn jǐgè wèntí,",
+                korean: "예를 들어, 어떤 이메일이 당신을 백만장자로 만들어줄 수 있다고 주장한다면, 다음과 같은 몇 가지 질문을 고려해 볼 수 있습니다.",
+                audio: "https://drive.google.com/uc?id=1XymrusZPCkkAbmOpcmNiEjc0GlRPEERx&export=download"
+            },
+            {
+                chinese: "什么因素决定我对此做出判断?",
+                pinyin: "shénme yīnsù juédìng wǒ duìcǐ zuòchū pànduàn?",
+                korean: "어떤 요소가 내가 이에 대해 판단을 내리게 만드는가?",
+                audio: "https://drive.google.com/uc?id=1RbmI0PojJpVyJIwEl88DRm0CoXGjGCZe&export=download"
+            },
+            {
+                chinese: "我认为发件人说的是实话吗?",
+                pinyin: "Wǒ rènwéi fājiànrén shuō de shì shíhuà ma?",
+                korean: "제가 생각하기에 발신자가 진실을 말하고 있는 건가요?",
+                audio: "https://drive.google.com/uc?id=1nR2NKCXaz_ytqDzjhQewu7F8EbWoem9R&export=download"
+            },
+            {
+                chinese: "从现实来看,我有可能赢钱吗?",
+                pinyin: "Cóng xiànshí láikàn, wǒ yǒu kěnéng yíngqián ma?",
+                korean: "현실적으로 봤을 때, 내가 이길 가능성이 있을까요?",
+                audio: "https://drive.google.com/uc?id=1g4L0sgv7n6oxl_e9RT4xa5xe1RKFRhip&export=download"
+            },
+            {
+                chinese: "第四,考虑后果及影响。",
+                pinyin: "Dìsì, kǎolǜ hòuguǒ jí yǐngxiǎng.",
+                korean: "넷째, 결과와 영향을 고려하다.",
+                audio: "https://drive.google.com/uc?id=1JIDb5Dd_734tT7_glQUutX9OD2ycasfP&export=download"
+            },
+            {
+                chinese: "想象一下现在是大选期,你选择支持一个候选人,",
+                pinyin: "Xiǎngxiàng yīxià xiànzài shì dàxuǎn qī, nǐ xuǎnzé zhīchí yígè hòuxuǎnrén,",
+                korean: "지금이 선거철이라고 상상해 보세요, 당신은 한 후보를 지지하기로 선택했습니다.",
+                audio: "https://drive.google.com/uc?id=1gbaI7fZQAleA_HOWyJdnwzhOlHn59d4p&export=download"
+            },
+            {
+                chinese: "是因为他承诺要让汽油更便宜。",
+                pinyin: "shìyīnwèi tā chéngnuò yào ràng qìyóu gèng piányi.",
+                korean: "그가 휘발유를 더 싸게 만들겠다고 약속했기 때문입니다.",
+                audio: "https://drive.google.com/uc?id=1RNARh4F5Ba6ipESCQfnB-5ZIRRF6ky1O&export=download"
+            },
+            {
+                chinese: "初听上去还不错,但长期来讲会对环境造成什么影响?",
+                pinyin: "Chū tīng shàngqù hái bùcuò, dàn chángqī láijiǎng huì duì huánjìng zàochéng shénme yǐngxiǎng?",
+                korean: "처음 들으면 괜찮아 보이지만, 장기적으로 보면 환경에 어떤 영향을 미칠까?",
+                audio: "https://drive.google.com/uc?id=1pLXd_00CuQc2ePyaxlgM9YyXUsPRCJRW&export=download"
+            },
+            {
+                chinese: "如果不用高价限制汽油的使用,大气污染将变得极其严重,",
+                pinyin: "Rúguǒ bùyòng gāojià xiànzhì qìyóu de shǐyòng, dàqìwūrǎn jiāng biàndé jíqí yánzhòng,",
+                korean: "고가의 가격으로 휘발유 사용을 제한하지 않으면 대기 오염이 매우 심각해질 것입니다.",
+                audio: "https://drive.google.com/uc?id=15mcKXifeLXLOBpRroFGkYoFsVUu3dkfo&export=download"
+            },
+            {
+                chinese: "而这是必须考虑的一个意外后果。",
+                pinyin: "ér zhè shì bìxū kǎolǜ de yígè yìwài hòuguǒ.",
+                korean: "그리고 이는 반드시 고려해야 할 예기치 않은 결과입니다.",
+                audio: "https://drive.google.com/uc?id=1BUBqNZ21i_iMr5ylXWsXpeAcMD3opyxW&export=download"
+            },
+            {
+                chinese: "第五,了解其他观点。",
+                pinyin: "Dìwǔ, liǎojiě qítā guāndiǎn.",
+                korean: "다섯째, 다른 관점을 이해하다.",
+                audio: "https://drive.google.com/uc?id=16V7iiVq5EJqm_fSjwCkIz6grPEP3qEXQ&export=download"
+            },
+            {
+                chinese: "问问自己为什么那么多人被对方候选人政策吸引?",
+                pinyin: "Wènwèn zìjǐ wèishénme nàme duōrén bèi duìfāng hòuxuǎnrén zhèngcè xīyǐn?",
+                korean: "스스로에게 물어보세요. 왜 그렇게 많은 사람들이 상대 후보의 정책에 매력을 느끼는 걸까요?",
+                audio: "https://drive.google.com/uc?id=1kvIo_RJ-vBRhxHxCM7Cd3KNfu5sAD6SD&export=download"
+            },
+            {
+                chinese: "即使你一点都不认同那个候选人所说的,",
+                pinyin: "Jíshǐ nǐ yìdiǎn dōu bù rèntóng nàge hòuxuǎnrén suǒshuō de,",
+                korean: "그 후보자가 말하는 것에 전혀 동의하지 않더라도,",
+                audio: "https://drive.google.com/uc?id=1Ap-0luZzt2PiSZ_zyYzxkl1fpg14dcbo&export=download"
+            },
+            {
+                chinese: "你也要探究他的一系列观点,",
+                pinyin: "nǐ yě yào tànjiū tā de yīxìliè guāndiǎn,",
+                korean: "너도 그의 일련의 관점을 탐구해야 해.",
+                audio: "https://drive.google.com/uc?id=1DTaJuXSnFJDk8C_tg9i6FWGuv2ACV48r&export=download"
+            },
+            {
+                chinese: "弄清楚为什么他的政策你觉得没用,但别人喜欢。",
+                pinyin: "nòngqīngchǔ wèishénme tā de zhèngcè nǐ juéde méiyòng, dàn biérén xǐhuān.",
+                korean: "그의 정책이 왜 당신에게는 효과가 없다고 느껴지지만 다른 사람들에게는 인기가 있는지 이해해 보세요.",
+                audio: "https://drive.google.com/uc?id=1QcVvi2-OIgp_R5buo4hXv8OQuC6YWqKY&export=download"
+            },
+            {
+                chinese: "你就让你能进一步探究其他选择,",
+                pinyin: "Nǐ jiù ràngnǐnéng jìnyíbù tànjiū qítā xuǎnzé,",
+                korean: "당신은 다른 선택지를 더 깊이 탐구할 수 있도록 하세요.",
+                audio: "https://drive.google.com/uc?id=1zChskwX1Sbf9DM1EjIz07rJ-OJK2ii_s&export=download"
+            },
+            {
+                chinese: "衡量你自己的选项,最后做出更好的决定。",
+                pinyin: "héngliáng nǐ zìjǐ de xuǎnxiàng, zuìhòu zuòchū gènghǎo de juédìng.",
+                korean: "자신의 선택을 신중하게 평가한 후, 더 나은 결정을 내리세요.",
+                audio: "https://drive.google.com/uc?id=1f_lwgnhYPhoGJ7bORUBnW4GKulWPc3rB&export=download"
+            },
+            {
+                chinese: "这五个步骤仅仅是工具,",
+                pinyin: "Zhè wǔgè bùzhòu jǐnjǐn shì gōngjù,",
+                korean: "이 다섯 단계는 단순히 도구일 뿐입니다.",
+                audio: "https://drive.google.com/uc?id=1IuUX9jVLTMqO58sn14ECG6WvsO7f7diP&export=download"
+            },
+            {
+                chinese: "也不可能完全消除我们所面对的难题,",
+                pinyin: "yě bù kěnéng wánquán xiāochú wǒmen suǒ miànduì de nántí,",
+                korean: "우리가 직면한 문제를 완전히 없앨 수는 없습니다.",
+                audio: "https://drive.google.com/uc?id=1OuJJP1Ib21p82m9z3XhJNRg2TBq-fOEJ&export=download"
+            },
+            {
+                chinese: "但却可以帮助我们做出更多更好的决定。",
+                pinyin: "dàn què kěyǐ bāngzhù wǒmen zuòchū gèngduōgènghǎo de juédìng.",
+                korean: "하지만 그로 인해 우리는 더 많은 그리고 더 나은 결정을 내릴 수 있습니다.",
+                audio: "https://drive.google.com/uc?id=1oENTkFLeDL4BzwGCzWBOHeyNLshpNIkn&export=download"
+            },
+            {
+                chinese: "批判性思维方式能帮我们筛选信息,",
+                pinyin: "Pīpànxìng sīwéi fāngshì néng bāng wǒmen shāixuǎn xìnxī,",
+                korean: "비판적 사고 방식은 우리가 정보를 선별하는 데 도움을 줍니다.",
+                audio: "https://drive.google.com/uc?id=1E_QWklvcURPL8sIQu6VNCUXaaQx0cH4-&export=download"
+            },
+            {
+                chinese: "找到我们真正想要的。",
+                pinyin: "zhǎodào wǒmen zhēnzhèng xiǎngyào de.",
+                korean: "우리가 진정으로 원하는 것을 찾아보세요.",
+                audio: "https://drive.google.com/uc?id=13BQviG0qPGg4UjjDmklRil-bGc9kdF3m&export=download"
+            },
+            {
+                chinese: "而且,如果更多的人具备批判性思维的能力,",
+                pinyin: "Érqiě, rúguǒ gèng duō de rén jùbèi pīpànxìng sīwéi de nénglì,",
+                korean: "또한, 더 많은 사람들이 비판적 사고 능력을 갖추게 된다면,",
+                audio: "https://drive.google.com/uc?id=1cjBZSoV8GD9gOGAdW_58HMoDzqB1f1aP&export=download"
+            },
+            {
+                chinese: "这个世界将变得更加理性。",
+                pinyin: "zhège shìjiè jiāng biàndé gèngjiā lǐxìng.",
+                korean: "이 세상은 더 이성적으로 변할 것입니다.",
+                audio: "https://drive.google.com/uc?id=1pDs_TfxV3SQDS9_RmZN-yQNOjNY5POOI&export=download"
+            }
+        ];
+
+        let showChinese = true;
+        let showPinyin = true;
+        let showKorean = true;
+
+        function renderSentences() {
+            const container = document.getElementById('sentences');
+            container.innerHTML = '';
+
+            sentences.forEach((sentence, index) => {
+                const div = document.createElement('div');
+                div.className = 'sentence';
+
+                let html = `<span class="sentence-number">${index + 1}</span>`;
+
+                if (showChinese) {
+                    html += `<div class="sentence-text chinese">${sentence.chinese}</div>`;
+                }
+                if (showPinyin) {
+                    html += `<div class="sentence-text pinyin">${sentence.pinyin}</div>`;
+                }
+                if (showKorean) {
+                    html += `<div class="sentence-text korean">${sentence.korean}</div>`;
+                }
+
+                html += `<button class="audio-btn" onclick="playAudio('${sentence.audio}')">🔊 발음 듣기</button>`;
+
+                div.innerHTML = html;
+                container.appendChild(div);
+            });
+
+            // Update quiz section
+            updateQuizVisibility();
+        }
+
+        function updateQuizVisibility() {
+            const quizChinese = document.querySelector('.quiz-chinese');
+            const quizPinyin = document.querySelector('.quiz-pinyin');
+            const quizKorean = document.querySelector('.quiz-korean');
+
+            if (quizChinese) quizChinese.style.display = showChinese ? 'block' : 'none';
+            if (quizPinyin) quizPinyin.style.display = showPinyin ? 'block' : 'none';
+            if (quizKorean) quizKorean.style.display = showKorean ? 'block' : 'none';
+        }
+
+        let currentAudio = null;
+
+        function playAudio(url) {
+            // Stop previous audio if playing
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            // Create and play new audio
+            currentAudio = new Audio(url);
+            currentAudio.play().catch(error => {
+                console.error('오디오 재생 실패:', error);
+                // Try to open in new tab as fallback
+                window.open(url, '_blank');
+            });
+        }
+
+        // Toggle buttons
+        document.getElementById('toggleChinese').addEventListener('click', function() {
+            showChinese = !showChinese;
+            this.classList.toggle('active');
+            renderSentences();
+        });
+
+        document.getElementById('togglePinyin').addEventListener('click', function() {
+            showPinyin = !showPinyin;
+            this.classList.toggle('active');
+            renderSentences();
+        });
+
+        document.getElementById('toggleKorean').addEventListener('click', function() {
+            showKorean = !showKorean;
+            this.classList.toggle('active');
+            renderSentences();
+        });
+
+        // Initial render
+        renderSentences();
+
+        // Quiz data
+        const quizzes = [
+            {
+                type: "grammar",
+                question: "문장 '我们都在做各种各样的决定'에서 쓰인 '在'의 문법적 기능으로 알맞은 것은 무엇입니까?",
+                options: ["진행상(Progressive aspect)을 나타낸다", "위치를 나타낸다", "가능을 나타낸다", "과거를 나타낸다"],
+                answer: "진행상(Progressive aspect)을 나타낸다"
+            },
+            {
+                type: "grammar",
+                question: "'要不要试吃最新的减肥食谱?'에서 '要不要' 구조의 기능으로 옳은 것은 무엇입니까?",
+                options: ["선택형 의문문을 만든다", "명령문을 만든다", "조건문을 만든다", "감탄문을 만든다"],
+                answer: "선택형 의문문을 만든다"
+            },
+            {
+                type: "vocabulary",
+                question: "다음 단어 '批判性思维'(HSK 6급)의 의미로 알맞은 것은 무엇입니까?",
+                options: ["감정적으로 사고하는 방식", "비판적으로 분석하고 판단하는 사고방식", "단순 암기 중심의 사고방식", "창의적으로 상상하는 사고방식"],
+                answer: "비판적으로 분석하고 판단하는 사고방식"
+            },
+            {
+                type: "vocabulary",
+                question: "다음 단어 '搜集'(HSK 5급)의 의미로 가장 알맞은 것은 무엇입니까?",
+                options: ["정리하다", "수집하다", "분석하다", "배포하다"],
+                answer: "수집하다"
+            },
+            {
+                type: "comprehension",
+                question: "이 글에서 비판적 사고(批判性思维)에 대한 설명으로 옳은 것은 무엇입니까?",
+                options: [
+                    "모든 정보를 의심 없이 받아들이는 태도이다",
+                    "결정을 내릴 때 감정에 따라 선택하는 방식이다",
+                    "문제를 분석하고 숨은 편견을 발견하여 더 나은 결정을 내리는 사고방식이다",
+                    "타인의 의견을 무조건 반박하는 태도이다"
+                ],
+                answer: "문제를 분석하고 숨은 편견을 발견하여 더 나은 결정을 내리는 사고방식이다"
+            }
+        ];
+
+        const quizTypeNames = {
+            "grammar": "문법",
+            "vocabulary": "어휘",
+            "comprehension": "독해"
+        };
+
+        let userAnswers = [];
+        let quizCompleted = false;
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            quizzes.forEach((quiz, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'quiz-question';
+                questionDiv.id = `question-${index}`;
+
+                let html = `
+                    <span class="quiz-type-badge">${quizTypeNames[quiz.type]}</span>
+                    <h3>Q${index + 1}. ${quiz.question}</h3>
+                    <div class="quiz-options">
+                `;
+
+                quiz.options.forEach((option, optIndex) => {
+                    html += `
+                        <div class="quiz-option" onclick="selectAnswer(${index}, '${option.replace(/'/g, "\\'")}')">
+                            ${option}
+                        </div>
+                    `;
+                });
+
+                html += `
+                    </div>
+                    <div class="quiz-feedback" id="feedback-${index}"></div>
+                `;
+
+                questionDiv.innerHTML = html;
+                container.appendChild(questionDiv);
+            });
+        }
+
+        function selectAnswer(questionIndex, selectedOption) {
+            if (quizCompleted) return;
+
+            const quiz = quizzes[questionIndex];
+            const questionDiv = document.getElementById(`question-${questionIndex}`);
+            const options = questionDiv.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById(`feedback-${questionIndex}`);
+
+            // Remove previous selections
+            options.forEach(opt => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+            });
+
+            // Mark selected option
+            options.forEach(opt => {
+                if (opt.textContent.trim() === selectedOption) {
+                    opt.classList.add('selected');
+                    if (selectedOption === quiz.answer) {
+                        opt.classList.add('correct');
+                        feedback.className = 'quiz-feedback correct';
+                        feedback.textContent = '✓ 정답입니다!';
+                    } else {
+                        opt.classList.add('incorrect');
+                        feedback.className = 'quiz-feedback incorrect';
+                        feedback.textContent = `✗ 틀렸습니다. 정답: ${quiz.answer}`;
+                    }
+                }
+            });
+
+            // Store answer
+            userAnswers[questionIndex] = selectedOption;
+
+            // Check if all questions answered
+            if (userAnswers.filter(a => a !== undefined).length === quizzes.length) {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizCompleted = true;
+            const correctAnswers = userAnswers.filter((answer, index) => answer === quizzes[index].answer).length;
+            const totalQuestions = quizzes.length;
+            const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+
+            document.getElementById('final-score').textContent = `${correctAnswers}/${totalQuestions}`;
+
+            let message = '';
+            if (percentage >= 80) {
+                message = '훌륭합니다! 내용을 잘 이해하셨습니다. 🎉';
+            } else if (percentage >= 60) {
+                message = '좋습니다! 조금만 더 복습하면 완벽해질 거예요. 👍';
+            } else {
+                message = '다시 한 번 내용을 복습해 보세요. 💪';
+            }
+
+            document.getElementById('score-message').textContent = message;
+            document.getElementById('quiz-results').style.display = 'block';
+
+            // Scroll to results
+            document.getElementById('quiz-results').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetQuiz() {
+            userAnswers = [];
+            quizCompleted = false;
+            document.getElementById('quiz-results').style.display = 'none';
+            renderQuiz();
+            document.getElementById('quiz-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize quiz
+        renderQuiz();
+    </script>
+</body>
+</html>

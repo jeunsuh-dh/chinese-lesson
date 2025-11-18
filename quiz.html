@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 - 提高批判性思维能力的五个技巧</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #fff9e6 0%, #fffacd 50%, #ffeaa7 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            color: #2c3e50;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 15px;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #fff0f0 0%, #ffeaa7 100%);
+            padding: 40px 30px;
+        }
+
+        .quiz-section h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .quiz-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .quiz-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .quiz-type-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            color: #2c3e50;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .quiz-question {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 16px;
+            color: #34495e;
+        }
+
+        .quiz-option:hover {
+            border-color: #fdcb6e;
+            background: #fffef9;
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+            font-size: 17px;
+        }
+
+        .quiz-option.selected {
+            border-color: #fdcb6e;
+            background: rgba(253, 203, 110, 0.2);
+        }
+
+        .quiz-option.correct {
+            border-color: #28a745;
+            background: rgba(40, 167, 69, 0.1);
+            font-weight: 600;
+        }
+
+        .quiz-option.incorrect {
+            border-color: #dc3545;
+            background: rgba(220, 53, 69, 0.1);
+        }
+
+        .quiz-feedback {
+            margin-top: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quiz-feedback.show {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .quiz-feedback.correct {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+        }
+
+        .quiz-feedback.incorrect {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+        }
+
+        .feedback-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .feedback-text {
+            flex: 1;
+        }
+
+        .feedback-text strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .explanation {
+            margin-top: 12px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #2c3e50;
+        }
+
+        .correct-answer {
+            margin-top: 8px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .quiz-context, .quiz-context-kr {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            border: 3px solid #fdcb6e;
+            transition: all 0.3s;
+        }
+
+        .quiz-context:hover, .quiz-context-kr:hover {
+            background: #fff8e1;
+            transform: translateX(3px);
+            box-shadow: 0 2px 8px rgba(253, 203, 110, 0.3);
+        }
+
+        .context-label {
+            font-weight: 600;
+            color: #e17055;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .context-text {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-size: 17px;
+            color: #1a1a1a;
+            line-height: 1.8;
+        }
+
+        .context-text-kr {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .highlight-word {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #2c3e50;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .highlight-word:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+        }
+
+        .highlight-idiom {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: white;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .highlight-idiom:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+        }
+
+        .highlight-grammar {
+            background: linear-gradient(135deg, #4ecdc4 0%, #6dd5ed 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: white;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .highlight-grammar:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(78, 205, 196, 0.5);
+        }
+
+        .blank-box {
+            display: inline-block;
+            background: #fff;
+            border: 3px dashed #fdcb6e;
+            border-radius: 6px;
+            padding: 4px 24px;
+            font-weight: 600;
+            color: #fdcb6e;
+            min-width: 80px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .blank-box:hover {
+            background: #fffef5;
+            border-color: #f39c12;
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(253, 203, 110, 0.3);
+        }
+
+        .quiz-results {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .quiz-results.show {
+            display: block;
+        }
+
+        .quiz-results h3 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .quiz-results .score {
+            font-size: 56px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+        }
+
+        .quiz-results .message {
+            font-size: 18px;
+            color: #34495e;
+            margin-bottom: 30px;
+        }
+
+        .reset-quiz-btn {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            color: #2c3e50;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(253, 203, 110, 0.5);
+        }
+
+        .reset-quiz-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(253, 203, 110, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .quiz-section {
+                padding: 20px;
+            }
+
+            .quiz-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 퀴즈</h1>
+            <p style="margin-top: 10px; font-size: 16px; opacity: 0.9;">提高批判性思维能力的五个技巧</p>
+            <a href="index.html" class="back-btn">← 본문으로 돌아가기</a>
+        </div>
+
+        <div class="quiz-section">
+            <h2>🎯 독해 퀴즈</h2>
+            <div id="quiz-container"></div>
+            <div class="quiz-results" id="quiz-results">
+                <h3>🎉 퀴즈 완료!</h3>
+                <div class="score" id="final-score">0/5</div>
+                <div class="message" id="score-message"></div>
+                <button class="reset-quiz-btn" onclick="resetQuiz()">다시 풀기</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                type: "📚 어휘",
+                question: "다음 <mark class='highlight-word'>단어</mark>의 한국어 뜻은 무엇인지 고르세요. (HSK 5급)",
+                context: "他们会用一切手段<mark class='highlight-word'>排除</mark>其他选项，只留下最有用、最值得信赖的信息。",
+                options: ["A. 배열하다", "B. 추가하다", "C. 선택하다", "D. 배제하다, 제거하다"],
+                answer: "D. 배제하다, 제거하다",
+                explanation: "'排除(páichú)'는 '제거하다, 배제하다'라는 뜻으로, 불필요한 것을 없애거나 제외시킨다는 의미입니다."
+            },
+            {
+                type: "📚 관용어",
+                question: "관용어 <mark class='highlight-idiom'>微不足道</mark>의 활용이 적절하지 않은 문장을 고르세요.",
+                options: [
+                    "A. 这件事<mark class='highlight-idiom'>微不足道</mark>，不值得为此烦恼。",
+                    "B. 他的贡献虽然<mark class='highlight-idiom'>微不足道</mark>，但我们还是很感谢。",
+                    "C. 这座大楼<mark class='highlight-idiom'>微不足道</mark>，是全市最高的建筑。",
+                    "D. 一个<mark class='highlight-idiom'>微不足道</mark>的细节可能会影响整个计划。"
+                ],
+                answer: "C. 这座大楼<mark class='highlight-idiom'>微不足道</mark>，是全市最高的建筑。",
+                explanation: "'微不足道(wēi bù zú dào)'는 '매우 미미하여 언급할 가치가 없다'는 뜻입니다. C번은 '전시에서 가장 높은 건물'이라고 했으므로 '미미하다'는 의미와 모순됩니다."
+            },
+            {
+                type: "✏️ 문법",
+                question: "다음 문장에서 <mark class='highlight-grammar'>被</mark>의 문법 기능은 무엇인가요?",
+                context: "我们<mark class='highlight-grammar'>被</mark>大量的决定围攻着，很多时候都没法做出最好的决定。",
+                options: ["A. 능동 표지", "B. 피동 표지", "C. 사역 표지", "D. 완료 표지"],
+                answer: "B. 피동 표지",
+                explanation: "'被(bèi)'는 피동문(수동態)을 나타내는 표지입니다. '被...围攻'는 '~에 의해 포위당하다'라는 의미로, 주어가 동작을 당하는 수동적 상황을 표현합니다."
+            },
+            {
+                type: "✏️ 문법",
+                question: "빈칸에 들어갈 가장 알맞은 접속사는 무엇인가요?",
+                context: "如果你想通过饮食方式来摄取更多营养，你可以咨询下营养师，<span class='blank-box'>______</span> 向他人寻求经验。",
+                options: ["A. 而且", "B. 或是", "C. 然而", "D. 因此"],
+                answer: "B. 或是",
+                explanation: "'或是(huòshì)'는 선택 관계를 나타내는 접속사로 '또는, 혹은'의 의미입니다. 영양사에게 상담하거나 다른 사람의 경험을 구하는 두 가지 선택지를 제시하는 문맥에서 가장 적절합니다."
+            },
+            {
+                type: "🎯 독해",
+                question: "본문에 따르면 비판적 사고의 5단계에 해당하지 않는 것은 무엇인가요?",
+                options: [
+                    "A. 明确你的问题",
+                    "B. 搜集信息",
+                    "C. 快速做决定",
+                    "D. 考虑后果及影响"
+                ],
+                answer: "C. 快速做决定",
+                explanation: "비판적 사고는 신중하게 분석하고 판단하는 과정이므로, '신속히 결정하기(快速做决定)'는 5단계에 포함되지 않습니다. 비판적 사고의 5단계는: 1.明确你的问题(문제 명확히 하기), 2.搜集信息(정보 수집하기), 3.运用信息(정보 활용하기), 4.考虑后果及影响(결과와 영향 고려하기), 5.了解其他观点(다른 관점 이해하기)입니다."
+            }
+        ];
+
+        let userAnswers = [];
+        let quizCompleted = false;
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+
+            quizData.forEach((quiz, index) => {
+                const card = document.createElement('div');
+                card.className = 'quiz-card';
+                card.id = `quiz-${index}`;
+
+                let html = `
+                    <div class="quiz-type-badge">${quiz.type}</div>
+                    <div class="quiz-question">${index + 1}. ${quiz.question}</div>
+                `;
+
+                if (quiz.context) {
+                    html += `
+                        <div class="quiz-context">
+                            <div class="context-text">${quiz.context}</div>
+                        </div>
+                    `;
+                }
+
+                if (quiz.contextKr) {
+                    html += `
+                        <div class="quiz-context-kr">
+                            <div class="context-label">💬 번역:</div>
+                            <div class="context-text-kr">${quiz.contextKr}</div>
+                        </div>
+                    `;
+                }
+
+                html += `<div class="quiz-options">`;
+
+                quiz.options.forEach((option, optIndex) => {
+                    html += `
+                        <div class="quiz-option" data-quiz="${index}" data-option="${option}">
+                            ${option}
+                        </div>
+                    `;
+                });
+
+                html += `
+                    </div>
+                    <div class="quiz-feedback" id="feedback-${index}"></div>
+                `;
+
+                card.innerHTML = html;
+                container.appendChild(card);
+            });
+
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.addEventListener('click', handleAnswer);
+            });
+        }
+
+        function handleAnswer(e) {
+            if (quizCompleted) return;
+
+            const quizIndex = parseInt(e.target.dataset.quiz);
+            const selectedOption = e.target.dataset.option;
+            const quiz = quizData[quizIndex];
+            const feedback = document.getElementById(`feedback-${quizIndex}`);
+
+            if (userAnswers[quizIndex]) return;
+
+            userAnswers[quizIndex] = selectedOption;
+
+            const allOptions = document.querySelectorAll(`[data-quiz="${quizIndex}"]`);
+
+            allOptions.forEach(opt => {
+                opt.style.pointerEvents = 'none';
+                if (opt.dataset.option === quiz.answer) {
+                    opt.classList.add('correct');
+                } else if (opt.dataset.option === selectedOption && selectedOption !== quiz.answer) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            if (selectedOption === quiz.answer) {
+                feedback.className = 'quiz-feedback correct show';
+                feedback.innerHTML = `
+                    <div class="feedback-icon">✓</div>
+                    <div class="feedback-text">
+                        <strong>정답입니다!</strong>
+                        ${quiz.explanation ? `<div class="explanation">${quiz.explanation}</div>` : ''}
+                    </div>
+                `;
+            } else {
+                feedback.className = 'quiz-feedback incorrect show';
+                feedback.innerHTML = `
+                    <div class="feedback-icon">✗</div>
+                    <div class="feedback-text">
+                        <strong>오답입니다.</strong>
+                        <div class="correct-answer">정답: ${quiz.answer}</div>
+                        ${quiz.explanation ? `<div class="explanation">${quiz.explanation}</div>` : ''}
+                    </div>
+                `;
+            }
+
+            if (userAnswers.filter(a => a).length === quizData.length) {
+                setTimeout(showResults, 1000);
+            }
+        }
+
+        function showResults() {
+            quizCompleted = true;
+            const correctCount = userAnswers.filter((answer, index) => answer === quizData[index].answer).length;
+            const total = quizData.length;
+            const percentage = (correctCount / total) * 100;
+
+            document.getElementById('final-score').textContent = `${correctCount}/${total}`;
+
+            let message = '';
+            if (percentage === 100) {
+                message = '완벽합니다! 🎉 모든 문제를 맞추셨네요!';
+            } else if (percentage >= 80) {
+                message = '훌륭합니다! 👏 대부분의 문제를 맞추셨어요!';
+            } else if (percentage >= 60) {
+                message = '잘하셨어요! 💪 조금만 더 노력하면 완벽해질 거예요!';
+            } else {
+                message = '다시 한번 도전해보세요! 📚 복습이 필요해 보여요!';
+            }
+
+            document.getElementById('score-message').textContent = message;
+            document.getElementById('quiz-results').classList.add('show');
+        }
+
+        function resetQuiz() {
+            userAnswers = [];
+            quizCompleted = false;
+            document.getElementById('quiz-results').classList.remove('show');
+            renderQuiz();
+        }
+
+        renderQuiz();
+    </script>
+</body>
+</html>
