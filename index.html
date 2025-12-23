@@ -232,6 +232,12 @@
             box-shadow: none;
         }
 
+        .korean.revealed {
+            background: transparent;
+            color: #2c2c2c;
+            box-shadow: none;
+        }
+
         .audio-btn {
             background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
             color: #2c3e50;
@@ -436,6 +442,15 @@
 
                 div.innerHTML = html;
                 container.appendChild(div);
+
+                // 모바일 터치 이벤트 추가
+                const koreanElement = div.querySelector('.korean');
+                if (koreanElement) {
+                    koreanElement.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        this.classList.toggle('revealed');
+                    });
+                }
             });
         }
 
